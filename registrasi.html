@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registrasi - Belajar Impor Mandiri</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-black text-white font-sans">
+
+  <!-- Navbar Logo Saja -->
+  <nav class="bg-white shadow px-4 md:px-8 lg:px-16 py-4">
+    <div class="flex items-center">
+      <img src="assets/logo5.png" alt="Logo BIM" class="h-10">
+    </div>
+  </nav>
+
+  <!-- Registrasi Form -->
+<main class="max-w-md mx-auto text-center px-4 mt-8">
+  <h1 class="text-3xl font-bold mb-4">Registrasi</h1>
+  <p class="mb-8 text-sm text-gray-400">
+    Untuk mendapatkan materi pembelajaran dan pelatihan di Belajar Impor Mandiri, silahkan isi formulir pendaftaran di bawah ini.
+  </p>
+
+  <!-- Notifikasi -->
+  <div id="alert" class="hidden mb-4 text-sm text-red-500 bg-red-100 px-4 py-2 rounded"></div>
+
+  <form id="regForm" class="space-y-4" onsubmit="return validateForm()">
+    <select name="paket" required class="w-full border border-gray-300 rounded px-4 py-2 text-black focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <option value="" disabled selected>Pilih Paket</option>
+      <option value="Basic">Paket Basic</option>
+      <option value="Premium">Paket Premium</option>
+    </select>
+    <input type="text" placeholder="Nama Anda" name="nama" required class="w-full border border-gray-300 rounded px-4 py-2 text-black focus:outline-none focus:ring-2 focus:ring-blue-500">
+    <input type="text" placeholder="Asal Kota" name="kota" required class="w-full border border-gray-300 rounded px-4 py-2 text-black focus:outline-none focus:ring-2 focus:ring-blue-500">
+    <input type="text" placeholder="Telepon/WhatsApp" name="telepon" required class="w-full border border-gray-300 rounded px-4 py-2 text-black focus:outline-none focus:ring-2 focus:ring-blue-500">
+    <input type="email" placeholder="Email" name="email" required class="w-full border border-gray-300 rounded px-4 py-2 text-black focus:outline-none focus:ring-2 focus:ring-blue-500">
+    <textarea rows="5" placeholder="Kategori" name="kategori" required class="w-full border border-gray-300 rounded px-4 py-2 text-black focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+    <button type="submit"
+      class="mt-4 w-full text-sm sm:text-base bg-gray-100 text-black hover:bg-black hover:text-white font-semibold py-2 sm:py-3 px-5 sm:px-6 rounded-md transition duration-300">
+      GABUNG SEKARANG
+    </button>
+  </form>
+</main>
+
+  <!-- Footer -->
+  <footer class="bg-white mt-20 py-12 text-black text-center">
+    <img src="assets/logo5.png" alt="Logo BIM" class="mx-auto h-12 mb-4">
+
+    <!-- Ikon Sosial Media -->
+    <div class="flex justify-center space-x-6 text-2xl mb-4">
+      <!-- Instagram Icon -->
+      <a href="#" aria-label="Instagram" class="hover:text-gray-500">
+        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+          <path d="M7.75 2A5.75 5.75 0 0 0 2 7.75v8.5A5.75 5.75 0 0 0 7.75 22h8.5A5.75 5.75 0 0 0 22 16.25v-8.5A5.75 5.75 0 0 0 16.25 2h-8.5Zm0 1.5h8.5A4.25 4.25 0 0 1 20.5 7.75v8.5A4.25 4.25 0 0 1 16.25 20.5h-8.5A4.25 4.25 0 0 1 3.5 16.25v-8.5A4.25 4.25 0 0 1 7.75 3.5ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 1.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7Zm5.25-.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/>
+        </svg>
+      </a>
+
+      <!-- TikTok Icon -->
+      <a href="#" aria-label="TikTok" class="hover:text-gray-500">
+        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+          <path d="M12.75 2h2.25a5.25 5.25 0 0 0 5.25 5.25v2.24a7.49 7.49 0 0 1-4.5-1.44v6.7a5.25 5.25 0 1 1-5.25-5.25h.75v2.25h-.75a3 3 0 1 0 3 3v-12.7Z"/>
+        </svg>
+      </a>
+    </div>
+
+    <p class="text-sm mt-4">©2024 Belajar Import Mandiri. All Rights Reserved. Published by <a href="https://www.eda.co.id" class="underline">www.eda.co.id</a></p>
+  </footer>
+
+  <script>
+function validateForm() {
+  const form = document.getElementById("regForm");
+  const nama = form.nama.value.trim();
+  const kota = form.kota.value.trim();
+  const telepon = form.telepon.value.trim();
+  const email = form.email.value.trim();
+  const kategori = form.kategori.value.trim();
+  const paket = form.paket.value;
+  const alertBox = document.getElementById("alert");
+
+  if (!nama || !kota || !telepon || !email || !kategori || !paket) {
+    alertBox.innerText = "⚠️ Mohon lengkapi semua data sebelum bergabung.";
+    alertBox.classList.remove("hidden");
+    return false;
+  }
+
+  alertBox.classList.add("hidden");
+
+  const message =
+    "hallo admin naik kelas affilite%0A" +
+    "saya ingin mendaftar dengan data berikut:%0A" +
+    "nama: " + nama + "%0A" +
+    "kota: " + kota + "%0A" +
+    "nomer: " + telepon + "%0A" +
+    "email: " + email + "%0A" +
+    "kategori: " + kategori + "%0A" +
+    "paket: " + paket;
+
+  const linkWA = `https://wa.me/6285752620187?text=${message}`;
+  window.open(linkWA, '_blank');
+
+  return false;
+}
+</script>
+
+</body>
+</html>
